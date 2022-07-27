@@ -1,7 +1,5 @@
 from datetime import datetime
-
 from rest_framework import generics
-
 from flights import serializers
 from flights.models import Booking, Flight
 
@@ -40,4 +38,9 @@ class BookFlight(generics.CreateAPIView):
     serializer_class = serializers.UpdateBookingSerializer
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user, flight_id=self.kwargs["flight_id"])
+        serializer.save(user=self.request.user,
+                        flight_id=self.kwargs["flight_id"])
+
+
+class UserRegistration(generics.CreateAPIView):
+    serializer_class = serializers.UserRegistrationSerializer

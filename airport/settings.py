@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import pathlib
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / ...
 BASE_DIR = pathlib.Path(__file__).parent.parent
@@ -58,6 +59,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "airport.urls"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": timedelta(days=1)}
 
 TEMPLATES = [
     {
